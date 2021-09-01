@@ -10,7 +10,7 @@ export const MapContainer = (props) => {
   const [map, setMap] = useState(null);
   const {google, query, placeId} = props;
 
-  useEffect(() => {
+   useEffect(() => {
     if(query) {
       searchByQuery(query);
     }
@@ -30,10 +30,11 @@ export const MapContainer = (props) => {
       placeId,
       fields: ['name', 'opening_hours', 'formatted_address', 'formatted_phone_number'],
     };
-
     service.getDetails(request, (place, status) => {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
-        dispatch(setRestaurant([place]));
+        setTimeout(() => {
+          dispatch(setRestaurant(place));
+        }, 500)
       }
     });
   }
@@ -80,7 +81,7 @@ export const MapContainer = (props) => {
 
   return(
     <Map 
-      google={google} 
+      google={google}
       centerAroundCurrentLocation 
       onMapReady={onMapReady} 
       onRecenter={onMapReady}

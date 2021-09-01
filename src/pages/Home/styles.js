@@ -22,12 +22,10 @@ export const Search = styled.section`
 `;
 
 export const Logo = styled.img`
-  margin-bottom: 15px;
-`;
+  margin: 0px auto 15px auto;
+  width: 200px;
+  height: auto;
 
-export const Map = styled.div`
-  background-color: gray;
-  width: calc(100vw - 360px);
 `;
 
 export const Carousel = styled(Slider)`

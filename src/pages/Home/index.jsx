@@ -16,7 +16,7 @@ import {
   Logo, 
   CarouselTitle, 
   ModalTitle,
-  ModalContent, 
+  ModalContent,
 } from './styles';
 
 const Home = () => {
@@ -65,6 +65,8 @@ const Home = () => {
               onChange={(e) => setInputValue(e.target.value)}
             />
           </TextField>
+          {restaurants.length > 0 ? (
+            <>
               <CarouselTitle>Na sua Área</CarouselTitle>
               <Carousel {...settings}>
                 {restaurants.map((restaurant) => (
@@ -75,6 +77,10 @@ const Home = () => {
                   />
                 ))}
               </Carousel>
+            </>
+          ) : (
+            <Loader />
+          )}
         </Search>
         {restaurants.map((restaurant) => (
           <RestaurantCard 
@@ -86,10 +92,21 @@ const Home = () => {
       </Container>
       <Map query={query} placeId={placeId} />
       <Modal open={modalOpened} onClose={() => setModalOpened(!modalOpened)}>
-        <ModalTitle>{restaurantSelected?.name}</ModalTitle>
-        <ModalContent>{restaurantSelected?.formatted_phone_number}</ModalContent>
-        <ModalContent>{restaurantSelected?.formatted_address}</ModalContent>
-        <ModalContent>{restaurantSelected?.opening_hours?.open_now ? 'Aberto agora = )' : 'Fechado neste momento = ('}</ModalContent>
+        {restaurantSelected ? (
+          <>
+            <ModalTitle>{restaurantSelected?.name}</ModalTitle>
+            <ModalContent>{restaurantSelected?.formatted_phone_number}</ModalContent>
+            <ModalContent>{restaurantSelected?.formatted_address}</ModalContent>
+            <ModalContent>{restaurantSelected?.opening_hours?.open_now ? 'Aberto agora = )' : 'Fechado neste momento = ('}</ModalContent>
+          </>
+        ) : (
+          <>
+            <Skeleton width="500px" height="10px" />
+            <Skeleton width="500px" height="10px" />
+            <Skeleton width="500px" height="10px" />
+            <Skeleton width="500px" height="10px" />
+          </>
+        )}
       </Modal>
     </Wrapper>
   );

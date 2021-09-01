@@ -11,7 +11,7 @@ const KeyFrameLoading = keyframes`
 `;
 
 const LoadingSkeleton = styled.div`
-  background-color: gray;
+  background-color: #b1b1b1;
   border-radius: 6px;
   margin-bottom: 10px;
   min-width: ${(props) => props.width};
