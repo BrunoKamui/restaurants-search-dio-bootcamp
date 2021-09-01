@@ -38,9 +38,9 @@ export const Address = styled.span`
 `;
 
 export const RestaurantPhoto = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 6px;
+  margin-left: 5px;
 `;
-
