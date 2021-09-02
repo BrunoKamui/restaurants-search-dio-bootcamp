@@ -80,21 +80,21 @@ export const MapContainer = (props) => {
   }
 
   return(
-    <Map 
+    <Map
       google={google}
-      centerAroundCurrentLocation 
-      onMapReady={onMapReady} 
+      centerAroundCurrentLocation
+      onMapReady={onMapReady}
       onRecenter={onMapReady}
       {...props}
     >
       {restaurants.map((restaurant) => (
-        <Marker 
-          key={restaurant.place_id} 
-          name={restaurant.name} 
+        <Marker
+          key={restaurant.place_id}
+          name={restaurant.name}
           position={{
             lat: restaurant.geometry.location.lat(),
             lng: restaurant.geometry.location.lng(),
-          }} 
+          }}
         />
       ))}
     </Map>
@@ -102,6 +102,6 @@ export const MapContainer = (props) => {
 };
 
 export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_GOOGLE_PAI_KEY,
+  apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
   language: 'pt-BR',
 }) (MapContainer);
